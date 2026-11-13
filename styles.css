@@ -1479,7 +1479,7 @@ p {
 }
 
 .comparison-table th, .custom-table th {
-  background-color: var(--color-primary);
+  background-color: var(--bg-dark);
   color: #FFFFFF;
   padding: 16px 20px;
   text-align: left;
