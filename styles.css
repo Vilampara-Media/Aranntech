@@ -404,25 +404,25 @@ p {
 
 /* Page-specific high-resolution hero background images matching page content */
 .hero-header-wrapper.hero-home {
-  background-image: url('assets/hero-home.jpg');
+  background-image: url('hero-home.jpg');
 }
 .hero-header-wrapper.hero-services {
-  background-image: url('assets/hero-services.jpg');
+  background-image: url('hero-services.jpg');
 }
 .hero-header-wrapper.hero-ai {
-  background-image: url('assets/hero-ai.jpg');
+  background-image: url('hero-ai.jpg');
 }
 .hero-header-wrapper.hero-industries {
-  background-image: url('assets/hero-industries.jpg');
+  background-image: url('hero-industries.jpg');
 }
 .hero-header-wrapper.hero-about {
-  background-image: url('assets/hero-about.jpg');
+  background-image: url('hero-about.jpg');
 }
 .hero-header-wrapper.hero-faq {
-  background-image: url('assets/hero-faq.jpg');
+  background-image: url('hero-faq.jpg');
 }
 .hero-header-wrapper.hero-contact {
-  background-image: url('assets/hero-contact.jpg');
+  background-image: url('hero-contact.jpg');
 }
 
 /* Clean, dark, corporate overlay without colored glow blotches */
