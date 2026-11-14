@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Lead Magnet Download Form Handler (AI Checklist)
+  // 4. AI Checklist Download Form Handler
   const leadMagnetForm = document.getElementById('leadMagnetForm');
   if (leadMagnetForm) {
     leadMagnetForm.addEventListener('submit', (e) => {
