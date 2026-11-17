@@ -530,10 +530,23 @@ p {
   background-image: none;
 }
 
-/* Mobile & Tablet (< 1024px): Display static high-res Earth globe fallback */
+/* Mobile & Tablet (<= 1024px): Display static high-res Earth globe fallback with matched dark tone */
 @media (max-width: 1024px) {
   .hero-header-wrapper.hero-home {
-    background-image: url('hero-home.jpg');
+    background-image: url('hero-home.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Matching premium dark tone overlay for mobile (subtle, elegant dark tone) */
+  .hero-header-wrapper.hero-home::before {
+    background: linear-gradient(180deg, 
+      rgba(8, 11, 17, 0.78) 0%, 
+      rgba(8, 11, 17, 0.45) 40%, 
+      rgba(8, 11, 17, 0.70) 75%, 
+      rgba(8, 11, 17, 0.98) 100%
+    ) !important;
   }
 }
 
