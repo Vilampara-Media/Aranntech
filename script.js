@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (questionBtn) {
       questionBtn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        
+
         // Close sibling items
         const parentList = item.parentElement;
         if (parentList) {
@@ -103,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.innerText : 'Submit';
-      
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerText = 'Submitting Request...';
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const submitBtn = leadMagnetForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.innerText : 'Download Checklist';
-      
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerText = 'Preparing Download...';
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Scrolling Down: Hide header
         if (scrollDiff > scrollThreshold && currentScrollY > 120) {
           siteHeader.classList.add('header-hidden');
-        } 
+        }
         // Scrolling Up: Reveal header
         else if (scrollDiff < -scrollThreshold) {
           siteHeader.classList.remove('header-hidden');
@@ -222,6 +222,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial check on load
     updateHeader();
+  }
+
+  // 6. Simple & Smooth Entry Transition Animations
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('has-anim');
+
+    // Auto-select key components for entry reveal transitions
+    const animTargets = document.querySelectorAll(
+      '.section-header, .practice-card-new, .card-light, .card-dark, .why-pillar-box, ' +
+      '.split-image-wrapper, .visual-img-box, .founder-card, .faq-card, .contact-expectation-card, ' +
+      '.table-wrapper, .checklist-box, .tags-wrapper, .contact-img-box'
+    );
+
+    animTargets.forEach((el) => {
+      el.classList.add('reveal-entry');
+      // If inside a grid, add staggered delay based on child index
+      if (el.parentElement && (el.parentElement.classList.contains('practice-grid') ||
+        el.parentElement.classList.contains('grid-2col') ||
+        el.parentElement.classList.contains('grid-3col') ||
+        el.parentElement.classList.contains('why-grid-top') ||
+        el.parentElement.classList.contains('why-grid-bottom') ||
+        el.parentElement.classList.contains('credential-grid'))) {
+        const index = Array.from(el.parentElement.children).indexOf(el);
+        if (index > 0 && index < 5) {
+          el.classList.add(`stagger-${index}`);
+        }
+      }
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target); // Animate once
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    document.querySelectorAll('.reveal-entry').forEach(el => observer.observe(el));
+  }
+
+  // 7. Desktop-Only Ambient Hero Background Video Loader
+  const heroBgVideo = document.getElementById('heroBgVideo');
+  if (heroBgVideo) {
+    const isDesktop = window.innerWidth > 1024;
+    const isSaveData = navigator.connection && (navigator.connection.saveData === true);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isDesktop && !isSaveData && !prefersReducedMotion) {
+      // Create and inject video sources dynamically so mobile never downloads video data
+      const sourceWebm = document.createElement('source');
+      sourceWebm.src = 'hero-globe.webm';
+      sourceWebm.type = 'video/webm';
+
+      const sourceMp4 = document.createElement('source');
+      sourceMp4.src = 'hero-globe.mp4';
+      sourceMp4.type = 'video/mp4';
+
+      heroBgVideo.appendChild(sourceWebm);
+      heroBgVideo.appendChild(sourceMp4);
+
+      heroBgVideo.load();
+      const playPromise = heroBgVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Silent fallback to poster / background-image if browser blocks autoplay
+        });
+      }
+    } else {
+      // Mobile or reduced motion: remove video node completely to keep DOM light and conserve mobile data
+      heroBgVideo.remove();
+    }
   }
 });
 
