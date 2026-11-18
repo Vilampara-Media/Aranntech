@@ -2239,6 +2239,15 @@ p {
   margin: 0;
 }
 
+.footer-ai-disclaimer {
+  color: #94A3B8 !important;
+  font-family: 'Sen', sans-serif;
+  font-size: 0.82rem !important;
+  line-height: 1.45;
+  margin: 6px 0 0 0 !important;
+  max-width: 280px;
+}
+
 .footer-legal-links a {
   color: #FFFFFF;
   font-family: 'Sen', sans-serif;
