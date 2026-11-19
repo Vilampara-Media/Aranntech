@@ -553,11 +553,11 @@ p {
 }
 
 .hero-header-wrapper.hero-services {
-  background-image: url('hero-services.jpg');
+  background-image: url('service-hero.jpg');
 }
 
 .hero-header-wrapper.hero-ai {
-  background-image: url('hero-ai.jpg');
+  background-image: url('ai-goverance-hero.jpg');
 }
 
 .hero-header-wrapper.hero-industries {
@@ -1313,6 +1313,98 @@ p {
 .founder-content {
   display: flex;
   flex-direction: column;
+}
+
+/* ==========================================================================
+   Founder Profile & Credly Badges Showcase
+   ========================================================================== */
+.founder-credentials-bar {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.credentials-info-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.credentials-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-pink);
+  background: rgba(255, 38, 98, 0.12);
+  border: 1px solid rgba(255, 38, 98, 0.28);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+
+.credentials-title {
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.credentials-desc {
+  font-size: 0.88rem;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.credentials-badges-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.credly-badge-frame {
+  width: 150px;
+  min-height: 270px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: #FFFFFF;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.credly-badge-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--color-accent);
+}
+
+.credly-badge-frame div[data-share-badge-id] {
+  width: 150px !important;
+  height: 270px !important;
+  display: block;
+}
+
+.credly-badge-frame iframe {
+  border: none !important;
+  display: block;
+  width: 150px !important;
+  height: 270px !important;
 }
 
 /* Highlight Boxes Outside vs Inside */
@@ -2566,6 +2658,25 @@ body.has-anim .reveal-entry.stagger-4 {
     margin: 0 auto;
   }
 
+  .founder-credentials-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+
+  .credentials-tag {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .credentials-badges-group {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+  }
+
   .footer-main-row,
   .footer-columns-row,
   .footer-grid,
@@ -2786,6 +2897,17 @@ body.has-anim .reveal-entry.stagger-4 {
   .founder-img-box {
     max-width: 180px;
     margin: 0 auto 16px auto;
+  }
+
+  .founder-credentials-bar {
+    padding: 20px 14px;
+    margin-top: 24px;
+  }
+
+  .credentials-badges-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
   }
 
   .tags-wrapper {
